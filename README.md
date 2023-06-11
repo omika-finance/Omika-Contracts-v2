@@ -1,7 +1,7 @@
 # GMX Contracts
 Contracts for GMX.
 
-Docs at https://gmxio.gitbook.io/gmx/contracts.
+Docs at omika.finance
 
 ## Install Dependencies
 If npx is not installed yet:
