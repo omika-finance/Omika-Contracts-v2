@@ -1,4 +1,4 @@
-const { getFrameSigner, deployContract, contractAt, sendTxn, writeTmpAddresses } = require("../shared/helpers")
+const { getFrameSigner, deployContract, contractAt, sendTxn, writeTmpAddresses, readTmpAddresses } = require("../shared/helpers")
 
 const network = (process.env.HARDHAT_NETWORK || 'mainnet');
 
@@ -17,20 +17,27 @@ async function getValues() {
 }
 
 async function main() {
-  const { glp, stakedGlpTracker, feeGlpTracker } = await getValues()
-  const sender = { address: "0xA7Ce4434A29549864a46fcE8662fD671c06BA49a" }
+  const { GLP, stakedGlpTracker, feeGlpTracker } = readTmpAddresses();
+  const sender = "0x551c95fEA9aE2bB0FC969526166692E26D28e40d"
 
   await deployContract("StakedGlpMigrator", [
-      sender.address,
-      glp.address,
-      stakedGlpTracker.address,
-      feeGlpTracker.address
+      sender,
+      GLP,
+      stakedGlpTracker,
+      feeGlpTracker
   ])
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error)
-    process.exit(1)
-  })
+
+async function deployStakedGlpMigrator() {
+  try {
+    await main()
+  }
+  catch (e) {
+    console.log("Error in deploy stakedglpMigrator: ", e)
+  }
+}
+
+module.exports = {
+  deployStakedGlpMigrator
+}

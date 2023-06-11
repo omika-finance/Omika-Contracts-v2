@@ -1,4 +1,4 @@
-const { deployContract, contractAt, sendTxn, getFrameSigner } = require("../shared/helpers")
+const { deployContract, contractAt, sendTxn, getFrameSigner, writeTmpAddresses } = require("../shared/helpers")
 const { expandDecimals } = require("../../test/shared/utilities")
 
 const network = (process.env.HARDHAT_NETWORK || 'mainnet');
@@ -37,9 +37,11 @@ async function getValues() {
 }
 
 async function main() {
-  const { nativeToken, glp, feeGlpTracker, stakedGlpTracker, glpManager } = await getValues()
+  // const { nativeToken, glp, feeGlpTracker, stakedGlpTracker, glpManager } = await getValues()
+  // const { GLP, WETH, }
 
   const rewardRouter = await deployContract("RewardRouterV2", [])
+  writeTmpAddresses({ RewardRouterV2: rewardRouter.address })
   await sendTxn(rewardRouter.initialize(
     nativeToken.address, // _weth
     AddressZero, // _gmx
@@ -57,9 +59,16 @@ async function main() {
   ), "rewardRouter.initialize")
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error)
-    process.exit(1)
-  })
+
+async function deployRewardRouter() {
+  try {
+    await main()
+  }
+  catch (e) {
+    console.log("Error in deployGov: ", e)
+  }
+}
+
+module.exports = {
+  deployRewardRouter
+}

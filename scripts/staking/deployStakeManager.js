@@ -1,12 +1,19 @@
-const { deployContract } = require("../shared/helpers")
+const { deployContract, writeTmpAddresses } = require("../shared/helpers")
 
 async function main() {
-  await deployContract("StakeManager", [])
+  const stakeManager = await deployContract("StakeManager", [])
+  writeTmpAddresses({ StakeManager: stakeManager.address })
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error)
-    process.exit(1)
-  })
+async function deployStakeManager() {
+  try {
+    await main()
+  }
+  catch (e) {
+    console.log("Error in deployGov: ", e)
+  }
+}
+
+module.exports = {
+  deployStakeManager
+}

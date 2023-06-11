@@ -19,7 +19,7 @@ async function deployTokenManager() {
     await main()
   }
   catch (e) {
-    throw new Error(`deployTokenManager error: ${e.toString()}`)
+    console.log("Error in deployTokenManager: ", e)
   }
 }
 

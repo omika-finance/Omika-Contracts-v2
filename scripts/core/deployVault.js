@@ -81,8 +81,8 @@ async function main() {
     await vault.setErrorController(vaultErrorController.address)
     await vaultErrorController.setErrors(vault.address, errors)
 
-    const vaultUtils = await deployContract("VaultUtils", [vault.address])
-    await vault.setVaultUtils(vaultUtils.address)
+    // const vaultUtils = await deployContract("VaultUtils", [vault.address])
+    // await vault.setVaultUtils(vaultUtils.address)
   }
   catch (error) {
     console.error(error);
@@ -95,7 +95,7 @@ async function deployVault() {
     await main()
   }
   catch (e) {
-    throw new Error('deployVault error:', e);
+    console.log("Error in deployVault: ", e)
   }
 }
 

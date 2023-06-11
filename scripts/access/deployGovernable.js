@@ -11,7 +11,7 @@ async function deployGov() {
     await main()
   }
   catch (e) {
-    throw new Error(`deployGovernable error: ${e.toString()}`)
+    console.log("Error in deployGov: ", e)
   }
 }
 

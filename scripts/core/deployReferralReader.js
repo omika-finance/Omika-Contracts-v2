@@ -2,13 +2,16 @@ const { deployContract, contractAt, writeTmpAddresses, sendTxn } = require("../s
 
 const network = (process.env.HARDHAT_NETWORK || 'mainnet');
 
-async function main() {
-  await deployContract("ReferralReader", [], "ReferralReader")
+async function deployReferralReader() {
+  try {
+    const referralReader = await deployContract("ReferralReader", [], "ReferralReader")
+    writeTmpAddresses({ ReferralReader: referralReader.address })
+  }
+  catch(error) {
+    console.log("Error deploying ReferralReader", error)
+  }
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error)
-    process.exit(1)
-  })
+module.exports = {
+  deployReferralReader
+}
