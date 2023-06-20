@@ -134,6 +134,42 @@ module.exports = {
       decimals: 18,
     },
   }, 
+  gnosis: {
+    btcPriceFeed: { address: "0x5741306c21795FdCBb9b265Ea0255F499DFe515C" },
+    ethPriceFeed: { address: "0x143db3CEEfbdfe5631aDD3E50f7614B6ba708BA7" },
+    bnbPriceFeed: { address: "0x2514895c72f50D8bd4B4F9b1110F0D6bD2c97526" },
+    busdPriceFeed: { address: "0x8F460c4F4Fa9F87AeA4f29B4Ee91d1b8e97163BA" },
+    usdcPriceFeed: { address: " 0x90c069C4538adAc136E051052E14c1cD799C41B7" },
+    usdtPriceFeed: { address: "0xEca2605f0BCF2BA5966372C99837b1F182d3D620" },
+    btc: {
+      address: "0xb19C12715134bee7c4b1Ca593ee9E430dABe7b56",
+      decimals: 18,
+    },
+    eth: {
+      address: "0x1958f7C067226c7C8Ac310Dc994D0cebAbfb2B02",
+      decimals: 18,
+    },
+    bnb: {
+      address: "0x612777Eea37a44F7a95E3B101C39e1E2695fa6C2",
+      decimals: 18,
+    },
+    busd: {
+      address: "0x3F223C4E5ac67099CB695834b20cCd5E5D5AA9Ef",
+      decimals: 18,
+    },
+    usdc: {
+      address: "0x9780881bf45b83ee028c4c1de7e0c168df8e9eef",
+      decimals: 18,
+    },
+    usdt: {
+      address: "0x337610d27c682e347c9cd60bd4b3b107c9d34ddd",
+      decimals: 18,
+    },
+    nativeToken: {
+      address: "0x612777Eea37a44F7a95E3B101C39e1E2695fa6C2",
+      decimals: 18,
+    },
+  }, 
   hardhat: {
     btcPriceFeed: { address: "0x5741306c21795FdCBb9b265Ea0255F499DFe515C" },
     ethPriceFeed: { address: "0x143db3CEEfbdfe5631aDD3E50f7614B6ba708BA7" },

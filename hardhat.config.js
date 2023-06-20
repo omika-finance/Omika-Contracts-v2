@@ -24,7 +24,9 @@ const {
   // MAINNET_URL,
   // MAINNET_DEPLOY_KEY
   CHIADO_TESTNET_URL,
-  CHIADO_TESTNET_DEPLOY_KEY
+  CHIADO_TESTNET_DEPLOY_KEY, 
+  GNOSIS_MAINNET_URL,
+  GNOSIS_MAINNET_DEPLOY_KEY
 } = require("./env.json")
 
 // This is a sample Hardhat task. To learn how to create your own go to
@@ -65,6 +67,12 @@ module.exports = {
     },
     hardhat: {
       allowUnlimitedContractSize: true
+    },
+    gnosis: {
+      url: GNOSIS_MAINNET_URL,
+      chainId: 100, 
+      gasPrice: 10000000000,
+      accounts: [GNOSIS_MAINNET_DEPLOY_KEY]
     },
     chiadoTestnet: {
       url: CHIADO_TESTNET_URL,
